@@ -50,6 +50,13 @@ with open('label_encoder.pk', 'rb') as fin:
 @app.route(base_url)
 def home():
     name = "Language Identifier - Universal"
+    X = vectorizer.fit_transform(['asd sdfsd'])
+    X = pd.DataFrame(data=X.toarray(),columns=feature_names)
+    X = (X - train_min)/(train_max-train_min)
+    language_probabilities = model.predict(X)
+    language_index = np.argmax(language_probabilities, axis = -1)
+    language_name = label_encoder.inverse_transform(language_index)
+    
     return render_template('Home.html', name=name)
 
 
