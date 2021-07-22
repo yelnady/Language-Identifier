@@ -7,16 +7,16 @@ import pickle
 import numpy as np
 import pandas as pd
 
-port = 12345
-def project_id():
-    import json
-    import os
-    info = json.load(open(os.path.join(os.environ['HOME'], ".smc", "info.json"), 'r'))
-    return info['project_id']
+#port = 12345
+#def project_id():
+#    import json
+#    import os
+#    info = json.load(open(os.path.join(os.environ['HOME'], ".smc", "info.json"), 'r'))
+#    return info['project_id']
 
-base_url = "/%s/port/%s/" % (project_id(), port)
-static_url = "/%s/port/%s/static" % (project_id(), port)
-app = Flask(__name__, static_url_path=static_url)
+#base_url = "/%s/port/%s/" % (project_id(), port)
+#static_url = "/%s/port/%s/static" % (project_id(), port)
+app = Flask(__name__)
 
 model = keras.models.load_model('')
 
@@ -47,7 +47,7 @@ with open('label_encoder.pk', 'rb') as fin:
 
 
     
-@app.route(base_url)
+@app.route('/')
 def home():
     name = "Language Identifier - Universal"
     X = vectorizer.fit_transform(['asd sdfsd'])
@@ -60,7 +60,7 @@ def home():
     return render_template('Home.html', name=name)
 
 
-@app.route(base_url+"/identify_get", methods=['POST', 'GET'])
+@app.route("/identify_get", methods=['POST', 'GET'])
 def get_language():
     sentence = request.args.get('msg')
     return predict(sentence)
