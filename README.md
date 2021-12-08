@@ -1,3 +1,3 @@
 - A model that detects 11 spoken languages with an accuracy of 98%. Built using Keras, TensorFlow.
-- Supported Languages: English , French , Italian , Romany , German , Portuguese, Mandarin, Vietnamese, Arabic, Dutch, and Spanish.  
-- Available at [language-identifier.ai-camp.org](language-identifier.ai-camp.org).
+- Supported Languages: English, Arabic, French, Italian, Romany, German, Portuguese, Mandarin, Vietnamese, Dutch, and Spanish.  
+- Hosted at [language-identifier.ai-camp.org](language-identifier.ai-camp.org).
